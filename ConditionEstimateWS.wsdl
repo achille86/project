@@ -1,0 +1,192 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://ConditionEstimate.wsutil.cs0.xframe.usi.it" xmlns:impl="http://ConditionEstimate.wsutil.cs0.xframe.usi.it" xmlns:intf="http://ConditionEstimate.wsutil.cs0.xframe.usi.it" xmlns:tns2="http://errors.system.xframe.usi.it" xmlns:tns3="http://postscript.codec.pdf.text.lowagie.com" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+ <wsdl:types>
+  <schema elementFormDefault="qualified" targetNamespace="http://ConditionEstimate.wsutil.cs0.xframe.usi.it" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <complexType name="ConditionEstimateRequest">
+    <sequence>
+     <element name="estimateNumber" nillable="true" type="xsd:string"/>
+     <element name="codFtf" nillable="true" type="xsd:string"/>
+     <element name="descFtf" nillable="true" type="xsd:string"/>
+     <element name="ftf" nillable="true" type="xsd:string"/>
+     <element name="position" nillable="true" type="xsd:string"/>
+     <element name="amount" nillable="true" type="xsd:string"/>
+     <element name="period" nillable="true" type="xsd:string"/>
+     <element name="userId" nillable="true" type="xsd:string"/>
+     <element name="ndg" nillable="true" type="xsd:string"/>
+     <element name="note" nillable="true" type="xsd:string"/>
+     <element name="branch" nillable="true" type="xsd:string"/>
+     <element name="accountType" nillable="true" type="xsd:string"/>
+     <element name="account" nillable="true" type="xsd:string"/>
+     <element name="cost" nillable="true" type="xsd:string"/>
+     <element name="periodDay" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="conditionEstimate">
+    <complexType>
+     <sequence>
+      <element name="request" nillable="true" type="impl:ConditionEstimateRequest"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ConditionEstimateResponse">
+    <sequence>
+     <element name="tan" nillable="true" type="xsd:string"/>
+     <element name="parameter" nillable="true" type="xsd:string"/>
+     <element name="typeRate" nillable="true" type="xsd:string"/>
+     <element name="dif" nillable="true" type="xsd:string"/>
+     <element name="taeg" nillable="true" type="xsd:string"/>
+     <element name="otherExpenses" nillable="true" type="xsd:string"/>
+     <element name="ftr" nillable="true" type="xsd:string"/>
+     <element name="dateInput" nillable="true" type="xsd:string"/>
+     <element name="expirationDate" nillable="true" type="xsd:string"/>
+     <element name="ndg" nillable="true" type="xsd:string"/>
+     <element name="accFido" nillable="true" type="xsd:string"/>
+     <element name="descFtf" nillable="true" type="xsd:string"/>
+     <element name="period" nillable="true" type="xsd:string"/>
+     <element name="spread" nillable="true" type="xsd:string"/>
+     <element name="messageType" nillable="true" type="xsd:string"/>
+     <element name="messageNumber" nillable="true" type="xsd:string"/>
+     <element name="table" nillable="true" type="xsd:string"/>
+     <element name="totAmount" nillable="true" type="xsd:string"/>
+     <element name="instalmentAmount" nillable="true" type="xsd:string"/>
+     <element name="currency" nillable="true" type="xsd:string"/>
+     <element name="installmentPeriod" nillable="true" type="xsd:string"/>
+     <element name="taex" nillable="true" type="xsd:string"/>
+     <element name="sqlcode" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="conditionEstimateResponse">
+    <complexType>
+     <sequence>
+      <element name="conditionEstimateReturn" nillable="true" type="impl:ConditionEstimateResponse"/>
+     </sequence>
+    </complexType>
+   </element>
+   <complexType name="ArrayOf_xsd_int">
+    <sequence>
+     <element maxOccurs="unbounded" minOccurs="0" name="item" nillable="true" type="xsd:int"/>
+    </sequence>
+   </complexType>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://errors.system.xframe.usi.it" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <complexType name="XFRException">
+    <sequence>
+     <element name="message" nillable="true" type="xsd:string"/>
+     <element name="stackTraceString" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <element name="XFRException" nillable="true" type="tns2:XFRException"/>
+  </schema>
+  <schema elementFormDefault="qualified" targetNamespace="http://postscript.codec.pdf.text.lowagie.com" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:impl="http://ConditionEstimate.wsutil.cs0.xframe.usi.it" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+   <import namespace="http://ConditionEstimate.wsutil.cs0.xframe.usi.it"/>
+   <complexType name="ParseException">
+    <sequence>
+     <element name="message" nillable="true" type="xsd:string"/>
+     <element name="currentToken" nillable="true" type="tns3:Token"/>
+     <element maxOccurs="unbounded" name="expectedTokenSequences" nillable="true" type="impl:ArrayOf_xsd_int"/>
+     <element maxOccurs="unbounded" name="tokenImage" nillable="true" type="xsd:string"/>
+    </sequence>
+   </complexType>
+   <complexType name="Token">
+    <sequence>
+     <element name="kind" type="xsd:int"/>
+     <element name="beginLine" type="xsd:int"/>
+     <element name="beginColumn" type="xsd:int"/>
+     <element name="endLine" type="xsd:int"/>
+     <element name="endColumn" type="xsd:int"/>
+     <element name="image" nillable="true" type="xsd:string"/>
+     <element name="next" nillable="true" type="tns3:Token"/>
+     <element name="specialToken" nillable="true" type="tns3:Token"/>
+    </sequence>
+   </complexType>
+   <element name="ParseException" nillable="true" type="tns3:ParseException"/>
+  </schema>
+ </wsdl:types>
+
+   <wsdl:message name="XFRException">
+
+      <wsdl:part element="tns2:XFRException" name="fault"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="ParseException">
+
+      <wsdl:part element="tns3:ParseException" name="fault"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="conditionEstimateResponse">
+
+      <wsdl:part element="impl:conditionEstimateResponse" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:message name="conditionEstimateRequest">
+
+      <wsdl:part element="impl:conditionEstimate" name="parameters"/>
+
+   </wsdl:message>
+
+   <wsdl:portType name="ConditionEstimateWS">
+
+      <wsdl:operation name="conditionEstimate">
+
+         <wsdl:input message="impl:conditionEstimateRequest" name="conditionEstimateRequest"/>
+
+         <wsdl:output message="impl:conditionEstimateResponse" name="conditionEstimateResponse"/>
+
+         <wsdl:fault message="impl:XFRException" name="XFRException"/>
+
+         <wsdl:fault message="impl:ParseException" name="ParseException"/>
+
+      </wsdl:operation>
+
+   </wsdl:portType>
+
+   <wsdl:binding name="ConditionEstimateWSSoapBinding" type="impl:ConditionEstimateWS">
+
+      <wsdlsoap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+
+      <wsdl:operation name="conditionEstimate">
+
+         <wsdlsoap:operation soapAction="conditionEstimate"/>
+
+         <wsdl:input name="conditionEstimateRequest">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:input>
+
+         <wsdl:output name="conditionEstimateResponse">
+
+            <wsdlsoap:body use="literal"/>
+
+         </wsdl:output>
+
+         <wsdl:fault name="XFRException">
+
+            <wsdlsoap:fault name="XFRException" use="literal"/>
+
+         </wsdl:fault>
+
+         <wsdl:fault name="ParseException">
+
+            <wsdlsoap:fault name="ParseException" use="literal"/>
+
+         </wsdl:fault>
+
+      </wsdl:operation>
+
+   </wsdl:binding>
+
+   <wsdl:service name="ConditionEstimateWSService">
+
+      <wsdl:port binding="impl:ConditionEstimateWSSoapBinding" name="ConditionEstimateWS">
+
+         <wsdlsoap:address location="http://localhost:9080/XA-CS0-WS/services/ConditionEstimateWS"/>
+
+      </wsdl:port>
+
+   </wsdl:service>
+
+</wsdl:definitions>
