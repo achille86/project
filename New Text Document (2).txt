@@ -1,0 +1,46 @@
+public static final String MSG_1532 = "GEC01532";
+
+
+public static void retrievesWarningMsg(GaussResponse gauss, String message) {
+    	
+    	if(gauss != null) {
+	    	HostResponseMessage[] newMessage = new HostResponseMessage[1];
+	    	
+	    	HostResponseMessage msg = new HostResponseMessage();
+	    	msg.setMessage(message);
+	    	newMessage[0] = msg;
+	    	gauss.setFlagCode("W");
+	    	gauss.setHostResponseMessage(newMessage);
+    	}
+    }
+
+	public static void retrievesWarningMsgWithParam(GaussResponse gauss, String message, String Param) {
+
+		HostResponseParams hostResponseParamTemp = new HostResponseParams();
+		HostResponseMessage hostResponseMessageTemp = new HostResponseMessage();
+		HostResponseMessage[] hostResponseMessageArray = new HostResponseMessage[1];
+		HostResponseParams[] hostResponseParamsArray = new HostResponseParams[1];
+		
+		hostResponseParamTemp.setParam(Param);
+		hostResponseParamsArray[0] = hostResponseParamTemp;
+		hostResponseMessageTemp.setHostResponseParams(hostResponseParamsArray);
+		hostResponseMessageArray[0]= hostResponseMessageTemp;
+		
+		if (gauss != null) {
+			HostResponseMessage[] newMessage = new HostResponseMessage[1];
+
+			HostResponseMessage msg = new HostResponseMessage();
+			msg.setMessage(message);
+			newMessage[0] = msg;
+			gauss.setFlagCode("W");
+			gauss.setHostResponseMessage(newMessage);
+		}
+		if (gauss.getHostResponseMessage() != null){
+			hostResponseMessageArray[0].setMessage(gauss.getHostResponseMessage()[0].getMessage());
+			hostResponseMessageArray[0].setDescription(gauss.getHostResponseMessage()[0].getDescription());
+		}
+		gauss.setHostResponseMessage(hostResponseMessageArray);
+	}
+
+
+
